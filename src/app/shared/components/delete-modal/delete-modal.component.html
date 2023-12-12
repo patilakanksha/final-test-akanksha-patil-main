@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h3 class="modal-title pull-left">Delete</h3>
+  <button class="close pull-right" aria-label="Close" (click)="onClose()">
+    <span aria-hiden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <h4>Are you sure to delete?</h4>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-danger" (click)="delete()">Delete</button>
+  <button class="btn btn-secondary" (click)="onClose()">Cancel</button>
+</div>

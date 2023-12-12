@@ -1,0 +1,142 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userName": "admin",
+      "password": "admin"
+    }
+  ],
+  "employees": [
+    {
+      "id": 3,
+      "firstName": "Sonal",
+      "lastName": "Patil",
+      "gender": "Female",
+      "shift": "First Shift",
+      "mobile": "1233456789",
+      "email": "ak@gmail.com",
+      "shiftBookDate": "2023-11-03",
+      "acceptTerms": true
+    },
+    {
+      "id": 4,
+      "firstName": "Akanksha",
+      "lastName": "Patil",
+      "gender": "Female",
+      "shift": "First Shift",
+      "mobile": "1234567898",
+      "email": "ak@gmail.com",
+      "shiftBookDate": "2023-10-22",
+      "acceptTerms": true
+    },
+    {
+      "id": 6,
+      "firstName": "Pranav",
+      "lastName": "Patil",
+      "gender": "Male",
+      "shift": "Second Shift",
+      "mobile": "1234566677",
+      "email": "pk@gmail.com",
+      "shiftBookDate": "2023-10-18",
+      "acceptTerms": true
+    },
+    {
+      "id": 7,
+      "firstName": "Nidhi",
+      "lastName": "Patil",
+      "gender": "Female",
+      "shift": "First Shift",
+      "mobile": "1234567788",
+      "email": "nigh09@gmail.com",
+      "shiftBookDate": "2023-10-19",
+      "acceptTerms": false
+    },
+    {
+      "id": 8,
+      "firstName": "Mukta",
+      "lastName": "Barve",
+      "gender": "Male",
+      "shift": "Second Shift",
+      "mobile": "123",
+      "email": "asd@gmail.com",
+      "shiftBookDate": "2023-10-17",
+      "acceptTerms": true
+    },
+    {
+      "id": 9,
+      "firstName": "anuja",
+      "lastName": "Gaikhe",
+      "gender": "Male",
+      "shift": "Second Shift",
+      "mobile": "1234567889",
+      "email": "anu@gh.cm",
+      "shiftBookDate": "2023-10-18",
+      "acceptTerms": true
+    },
+    {
+      "id": 10,
+      "firstName": "Rina",
+      "lastName": "Gholap",
+      "gender": "Female",
+      "shift": "Second Shift",
+      "mobile": "1234555555",
+      "email": "asd@gh.com",
+      "shiftBookDate": "2023-10-25",
+      "acceptTerms": true
+    }
+  ],
+  "tables": [
+    {
+      "id": 2,
+      "name": "Table2",
+      "number": 102,
+      "description": "A description for Table2"
+    },
+    {
+      "id": 3,
+      "name": "Table3",
+      "number": 103,
+      "description": "A desc of table 3 update1"
+    },
+    {
+      "id": 4,
+      "name": "Table4",
+      "number": 104,
+      "description": "A desc 4"
+    },
+    {
+      "id": 5,
+      "name": "table5",
+      "number": 105,
+      "description": "desc5"
+    },
+    {
+      "id": 6,
+      "name": "table6",
+      "number": 106,
+      "description": "desc6"
+    },
+    {
+      "id": 7,
+      "name": "Table1",
+      "number": 101,
+      "description": "Table1 desc"
+    }
+  ],
+  "bookingTable": [
+    {
+      "id": 1,
+      "tableId": "4",
+      "startTime": "2023-12-10T21:27",
+      "endTime": "2023-12-10T22:00",
+      "status": "Confirm"
+    },
+    {
+      "id": 2,
+      "tableId": "4",
+      "startTime": "2023-12-12T21:45",
+      "endTime": "2023-12-13T21:47",
+      "status": "Pending"
+    }
+  ]
+}

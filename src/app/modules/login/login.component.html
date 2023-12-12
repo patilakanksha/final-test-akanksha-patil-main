@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <img src="assets/images/login.jpg" alt="login image" class="img-fluid">
+    </div>
+    <div class="col-sm">
+      <div class="card shadow login-card">
+        <div class="card-body">
+          <h4 class="card-title text-center text-primary">Login</h4>
+          <form [formGroup]="loginForm">
+            <div class="form-group mt-3">
+              <div class="form-floating">
+                <input formControlName="userName" class="form-control" placeholder="Username" />
+                <label>User Name</label>
+                <div *ngIf="checkIfControlValid('userName')">
+                  <small class=text-danger *ngIf="checkControlHasError('userName', 'required')">
+                    User Name is required
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <div class="form-floating password-input">
+                <input type={{passwordType}} formControlName="password" class="form-control" placeholder="Password" />
+                <label>Password</label>
+                <i class={{passwordVisibility}} (click)="changePasswordType()"></i>
+                <div *ngIf="checkIfControlValid('password')">
+                  <small class=text-danger *ngIf="checkControlHasError('password', 'required')">
+                    Password is required
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-outline-primary form-control mt-4" [disabled]="loginForm.invalid"
+                (click)="login()">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

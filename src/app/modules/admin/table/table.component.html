@@ -1,0 +1,82 @@
+<!-- Employee list -->
+<div class="container employee-shift-section">
+  <h1 class="text-center">Tables</h1>
+  <div class="row">
+    <div class="col-sm">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="searchedKey"
+          (input)="applyFilter()"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="Search"
+        />
+        <span class="input-group-text" id="Search"
+          ><i class="fa fa-search"></i
+        ></span>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="text-end">
+        <button
+          title="Add"
+          class="btn btn-success btn-xl"
+          (click)="openAddEditTableModal()"
+        >
+          <i class="fa fa-plus fa-lg"></i> Add Table
+        </button>
+      </div>
+    </div>
+    <div class="table-responsive mt-5">
+      <ngx-datatable
+        class="bootstrap no-detail-row"
+        [columnMode]="'force'"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [rows]="filter"
+        [count]="totalCount"
+        [limit]="5"
+        [scrollbarH]="true"
+      >
+        <ngx-datatable-column name="Table Name" prop="name" [width]="150">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Table Number" prop="number" [width]="150">
+        </ngx-datatable-column>
+        <ngx-datatable-column
+          name="Table Desctiption"
+          prop="description"
+          [width]="300"
+        >
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Actions" [sortable]="false" [width]="120">
+          <ng-template
+            ngx-datatable-cell-template
+            let-rowndex="rowIndex"
+            let-id="value"
+            let-row="row"
+          >
+            <button
+              title="Edit"
+              type="button"
+              class="btn btn-sm btn-warning ms-2 mt-1"
+              (click)="openAddEditTableModal(row)"
+            >
+              <i class="fa fa-edit fa-lg"></i>
+            </button>
+            <button
+              title="Delete"
+              type="button"
+              class="btn btn-sm btn-danger ms-2 mt-1"
+              (click)="openDeleteTableModal(row)"
+            >
+              <i class="fa fa-trash fa-lg"></i>
+            </button>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+</div>
