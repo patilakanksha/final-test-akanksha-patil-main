@@ -2,17 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { TableComponent } from './table/table.component';
-import { TableBookingComponent } from '../dashboard/table-booking/table-booking.component';
 import { RoleAuthGuard } from 'src/app/shared/helper/role-auth.guard';
-
-// const routes: Routes = [
-//   {
-//     path: '',
-//     component: AdminComponent,
-//   },
-//   { path: 'table', component: TableComponent, canActivate: [RoleAuthGuard], // Add this line for role-based access control
-//   data: { roles: ['Admin'] },
-// }];
+import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
+import { NotAuthorizedComponent } from 'src/app/shared/components/not-authorized/not-authorized.component';
 
 const adminRoutes: Routes = [{
   path: '',
@@ -20,7 +12,8 @@ const adminRoutes: Routes = [{
   children: [
     { path: '', component: AdminComponent, canActivate: [RoleAuthGuard], },
     { path: 'table', component: TableComponent, canActivate: [RoleAuthGuard], data: { roles: ['Admin']}},
-    // { path: '**', component: TableComponent, canActivate: [RoleAuthGuard], data: { roles: ['Guest']} },
+   // { path: '/not-authorized', component: NotAuthorizedComponent, canActivate: [RoleAuthGuard], },
+    // { path: '**', component: PageNotFoundComponent },
   ], canActivate: [RoleAuthGuard]
 }];
 

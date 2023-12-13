@@ -23,6 +23,15 @@
           </select>
           <label for="table">Table</label>
         </div>
+        <small
+        *ngIf="
+          bookingTableForm.get('tableId')?.hasError('required') &&
+          bookingTableForm.get('tableId')?.touched
+        "
+        class="text-danger"
+      >
+        Select Table.
+      </small>
       </div>
 
       <div class="form-group col">

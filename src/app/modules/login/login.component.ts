@@ -20,13 +20,17 @@ export class LoginComponent {
    * The ngOnInit function removes the 'userName' item from the localStorage.
    */
   ngOnInit() {
-    
+    debugger;
     const role = localStorage.getItem('role');
     if(role){
       if(role=='Admin'){
         this.router.navigate(['/admin/table']);
       } else if(role=='Guest'){
         this.router.navigate(['/dashboard']);
+      }
+      else if(role=='Manager')
+      {
+        this.router.navigate(['/manager/booking-lis']);
       }
     } else {
       localStorage.removeItem('userName');
@@ -62,11 +66,16 @@ export class LoginComponent {
         localStorage.setItem("userId", response?.user?.id);
         localStorage.setItem('userName', response?.user?.firstName);
         this.toastrService.success('User logged in successsfully', 'Success');
+        console.log(response?.user?.role);
         if(response?.user?.role){
           if(response?.user?.role=='Admin'){
             this.router.navigate(['/admin/table']);
           } else if(response?.user?.role=='Guest'){
             this.router.navigate(['/dashboard']);
+          }
+          else if(response?.user?.role == 'Manager')
+          {
+            this.router.navigate(['/manager/booking-list']);
           }
 
         }

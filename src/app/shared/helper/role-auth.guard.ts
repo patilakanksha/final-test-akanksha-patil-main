@@ -26,15 +26,12 @@ export class RoleAuthGuard implements CanActivate {
       if (this.checkRoleAuthorization(userRoles?userRoles:'', requiredRoles)) {
         return true;
       } else {
-        this.toastrService.error('Unauthorized access', 'Error');
+       // this.toastrService.error('Unauthorized access', 'Error');
         this.router.navigate(['/not-authorized']);
         return false;
       }
     } else {
-        debugger
         this.authService.refereshToken();
-        this.toastrService.error('Session expired. Please log in again.', 'Error');
-        this.authService.logoutUser();
         return false;
     }
   }

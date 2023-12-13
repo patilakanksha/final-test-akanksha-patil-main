@@ -30,13 +30,9 @@ export class ProfileComponent {
     this.adminService.getUser().subscribe((response: any) => {
       console.log("Response of LoggedIn User",response);
       this.loggedInProfile = response; 
-      console.log(this.loggedInProfile);
-      console.log("Response of LoggedIn User",this.loggedInProfile);
+      
     });
   }
-
- 
-
   
   public openUpdateProfileModal(): void {
     debugger

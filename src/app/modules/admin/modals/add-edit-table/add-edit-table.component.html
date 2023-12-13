@@ -1,12 +1,7 @@
 <div class="modal-header">
   <h3 class="modal-title pull-left">{{ isEdit ? "Edit" : "Add" }} Table</h3>
-  <button
-    class="btn btn-outline-secondary close pull-right"
-    aria-label="Close"
-    tooltip
-    title="Close"
-    (click)="onClose()"
-  >
+  <button class="btn btn-outline-secondary close pull-right" aria-label="Close" tooltip title="Close"
+    (click)="onClose()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
@@ -15,50 +10,46 @@
     <div class="row mt-3">
       <div class="form-group col">
         <div class="form-floating">
-          <input
-            type="text"
-            formControlName="name"
-            class="form-control"
-            placeholder="Enter table name"
-          />
+          <input type="text" formControlName="name" class="form-control" placeholder="Enter table name" />
           <label>Table Name</label>
         </div>
-        <small
-          *ngIf="
+        <small *ngIf="
             tableForm.get('name')?.hasError('required') &&
             tableForm.get('name')?.touched
-          "
-          class="text-danger"
-        >
+          " class="text-danger">
           Name is required.
         </small>
+        <div>
+          <small class=text-danger *ngIf="checkControlHasError('name', 'maxlength')">
+            Name should not exceed 50 character
+          </small>
+        </div>
+        <div>
+          <small class=text-danger *ngIf="checkControlHasError('name', 'minlength')">
+          Name should have minimum 2 character
+          </small>
+        </div>
+        <div>
+          <small class=text-danger *ngIf="checkControlHasError('name', 'pattern')">
+            Only letters are allowed
+          </small>
+          </div>
       </div>
       <div class="form-group col">
         <div class="form-floating">
-          <input
-            type="number"
-            formControlName="number"
-            class="form-control"
-            placeholder="Enter table number"
-          />
+          <input type="number" formControlName="number" class="form-control" placeholder="Enter table number" />
           <label>Table Number</label>
         </div>
-        <small
-          *ngIf="
+        <small *ngIf="
             tableForm.get('number')?.hasError('required') &&
             tableForm.get('number')?.touched
-          "
-          class="text-danger"
-        >
+          " class="text-danger">
           Number is required.
         </small>
-        <small
-          *ngIf="
+        <small *ngIf="
             tableForm.get('number')?.hasError('min') &&
             tableForm.get('number')?.touched
-          "
-          class="text-danger"
-        >
+          " class="text-danger">
           Please enter a valid number greater than 0.
         </small>
       </div>
@@ -66,34 +57,36 @@
     <div class="row mt-3">
       <div class="form-group col">
         <div class="form-floating">
-          <input
-            type="text"
-            formControlName="description"
-            class="form-control"
-            placeholder="Enter table description"
-          />
+          <input type="text" formControlName="description" class="form-control" placeholder="Enter table description" />
           <label>Table Description</label>
         </div>
-        <small
-          *ngIf="
+        <small *ngIf="
             tableForm.get('description')?.hasError('required') &&
             tableForm.get('description')?.touched
-          "
-          class="text-danger"
-        >
+          " class="text-danger">
           Description is required.
         </small>
+        <div>
+          <small class=text-danger *ngIf="checkControlHasError('description', 'maxlength')">
+            description should not exceed 50 character
+          </small>
+        </div>
+        <div>
+          <small class=text-danger *ngIf="checkControlHasError('description', 'minlength')">
+            description should have minimum 2 character
+          </small>
+        </div>
+        <div>
+          <small class=text-danger *ngIf="checkControlHasError('description', 'pattern')">
+            Only letters are allowed
+          </small>
+          </div>
       </div>
     </div>
   </form>
 </div>
 <div class="modal-footer">
-  <button
-    class="btn btn-primary"
-    tooltip
-    [title]="isEdit ? 'Update' : 'Add'"
-    (click)="save()"
-  >
+  <button class="btn btn-primary" tooltip [title]="isEdit ? 'Update' : 'Add'" (click)="save()">
     {{ isEdit ? "Update" : "Add" }}
   </button>
   <button class="btn btn-secondary" tooltip title="Cancel" (click)="onClose()">

@@ -24,20 +24,10 @@ import { RouterModule } from '@angular/router';
     AddEditTableComponent,
   ],
   imports: [
-    // CommonModule,
-    // AdminRoutingModule,
-    // NgxDatatableModule,
-    // ReactiveFormsModule,
-    // HttpClientModule,
-    // FormsModule,
-    // ModalModule.forRoot(),
-    // ToastrModule.forRoot(),
-    // SharedModule,
-
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule, // Make sure RouterModule is imported after FormsModule and ReactiveFormsModule
+    RouterModule,
     NgxDatatableModule,
     ModalModule.forRoot(),
     ToastrModule.forRoot(),

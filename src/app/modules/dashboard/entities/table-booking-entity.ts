@@ -4,4 +4,5 @@ export interface TableBookingEntity {
   startTime: string; // You might want to use a Date type here depending on your needs
   endTime: string;
   status: string;
+  userId:string;
 }

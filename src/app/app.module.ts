@@ -22,6 +22,9 @@ import { GuestRegistrationComponent } from './modules/guest-registration/guest-r
 import { NotAuthorizedComponent } from './shared/components/not-authorized/not-authorized.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { RoleAuthGuard } from './shared/helper/role-auth.guard';
+import { ManagerComponent } from './modules/manager/manager.component';
+import { BookingListComponent } from './modules/manager/booking-list/booking-list.component';
+import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
 
 // Function to get JWT token from local storage
 export function tokenGetter() {
@@ -33,7 +36,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'guest-registration', component: GuestRegistrationComponent },
-  { path: 'not-authorized', component: NotAuthorizedComponent },
+  // { path: '/not-authorized', component: NotAuthorizedComponent },
   {
     path: 'admin',
     loadChildren: () => import('./modules/admin/admin.module').then((m) => m.AdminModule),
@@ -46,7 +49,12 @@ const routes: Routes = [
     canActivate: [RoleAuthGuard],
     data: { roles: ['user', 'manager', 'admin'] },
   },
-  { path: '**', component: LoginComponent },
+  {
+    path: 'manager',
+    loadChildren: () => import('./modules/manager/manager.module').then((m) => m.ManagerModule),
+    canActivate: [RoleAuthGuard],
+    data: { roles: ['Manager'] },
+  },
 ];
 
 @NgModule({
@@ -56,6 +64,7 @@ const routes: Routes = [
     DashboardComponent,
     GuestRegistrationComponent,
     NotAuthorizedComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

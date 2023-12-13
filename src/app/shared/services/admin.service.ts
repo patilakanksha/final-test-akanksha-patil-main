@@ -11,14 +11,13 @@ import { BASE_URL, END_POINT } from 'src/assets/global_urls';
 export class AdminService {
   constructor(private httpClient: HttpClient) {}
 
+  //#Tables region
   public getTables(): any {
     return this.httpClient.get(BASE_URL + END_POINT.GET_TABLES);
   }
 
   public addEditTable(data: TableEntity): any {
     if (data.id) {
-      // const endpoint = `${BASE_URL + END_POINT.UPDATE_TABLE + data.id}`;
-      // return this.httpClient.put(endpoint, data);
       const endpoint = `${BASE_URL + END_POINT.UPDATE_TABLE}`;
       return this.httpClient.post(endpoint, data);
     } else {
@@ -29,9 +28,6 @@ export class AdminService {
   }
 
   public deleteTable(tableId: number): any {
-    // return this.httpClient.delete(
-    //   `${BASE_URL + END_POINT.DELETE_TABLE + tableId}`
-    // );
     let payload: any = { id: tableId };
     return this.httpClient.post(BASE_URL + END_POINT.DELETE_TABLE, payload);
   }
@@ -44,8 +40,6 @@ export class AdminService {
   public addEditBookingTable(data: TableBookingEntity): any {
     debugger;
     if (data.id) {
-      // const endpoint = `${BASE_URL + END_POINT.UPDATE_BOOKING_TABLE + data.id}`;
-      // return this.httpClient.put(endpoint, data);
       let updatePayload = {
         "id": data.id,
         "tableId": data.tableId,
@@ -58,7 +52,6 @@ export class AdminService {
       const endpoint = `${BASE_URL + END_POINT.UPDATE_BOOKING_TABLE}`;
       return this.httpClient.post(endpoint, updatePayload);
     } else {
-      // let payload = {name: data., number: data.number, description: data.description};
       let payload = {
         "tableId": data.tableId,
         "startTime": data.startTime,
@@ -73,36 +66,27 @@ export class AdminService {
 
   public deleteBookingTable(tableId: number): any {    
     let payload: any = { id: tableId };
-    console.log("payload")
     return this.httpClient.post(BASE_URL + END_POINT.DELETE_BOOKING_TABLE, payload);
-    // return this.httpClient.delete(
-    //   `${BASE_URL + END_POINT.DELETE_BOOKING_TABLE + tableId}`
-    // );
   }
-  //#endregion
 
 
-  //#region User
+  //#region User Profile
   public getUser(): any {
     const loggedInUserId :string|null = localStorage.getItem('userId');
-    console.log('User ID from localStorage:', loggedInUserId);
 
     let payload = {
       id: loggedInUserId,
     };
-    console.log("Logged Data Id", payload);
+
     const endpoint = `${BASE_URL + END_POINT.GET_USER_BY_ID}`;
     return this.httpClient.post(endpoint, payload);
   }
 
   public addEditUser(data: ProfileEntity): any {
     if (data.id) {
-      // const endpoint = `${BASE_URL + END_POINT.UPDATE_BOOKING_TABLE + data.id}`;
-      // return this.httpClient.put(endpoint, data);
       const endpoint = `${BASE_URL + END_POINT.UPDATE_PROFILE}`;
       return this.httpClient.post(endpoint, data);
     } else {
-      // let payload = {name: data., number: data.number, description: data.description};
       let payload = {
         "firstName": data.firstName,
         "lasName": data.lastName,
@@ -115,12 +99,23 @@ export class AdminService {
     }
   }
 
-  public deleteUser(tableId: number): any {
-    let payload: any = { id: tableId };
-    return this.httpClient.post(BASE_URL + END_POINT.DELETE_BOOKING_TABLE, payload);
-    // return this.httpClient.delete(
-    //   `${BASE_URL + END_POINT.DELETE_BOOKING_TABLE + tableId}`
-    // );
+  //#Manager
+  //Edit Booking Status of table
+  public editBookingStatus(data: TableBookingEntity): any {
+    if (data.id) {
+      const endpoint = `${BASE_URL + END_POINT.UPDATE_BOOKING_TABLE}`;
+      return this.httpClient.post(endpoint, data);
+    } else {
+      let payload = {
+        "tableId": data.tableId,
+        "startTime": data.startTime,
+        "endTime": data.endTime,
+        "status": data.status,
+        "userId": localStorage.getItem('userId')
+      }
+      const endpoint = `${BASE_URL + END_POINT.SAVE_BOOKING_TABLE}`;
+      return this.httpClient.post(endpoint, payload);
+    }
   }
-  //#endregion
+
 }

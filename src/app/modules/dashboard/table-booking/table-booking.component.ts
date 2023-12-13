@@ -32,14 +32,28 @@ export class TableBookingComponent {
   }
 
   private loadBookingTables(): void {
-    this.adminService.getbookingTables().subscribe((response: any) => {
-      console.log("Response of Booking",response);
-      this.tableBooking = response;
-      this.filter = [...response];
-      this.totalCount = this.tableBooking.length;
-  
+    // this.adminService.getbookingTables().subscribe((response: any) => {
+    //   console.log("Response of Booking",response);
+    //   this.tableBooking = response;
+    //   this.filter = [...response];
+    //   this.totalCount = this.tableBooking.length;  
 
+    // });
+    const loggedInUserId = localStorage.getItem('userId');
+
+  if (loggedInUserId) {
+    this.adminService.getbookingTables().subscribe((response: any) => {
+      console.log("Response of Booking", response);
+
+      // Filter the array based on the userId
+      this.tableBooking = response.filter((booking: any) => booking.userId === loggedInUserId);
+      
+      // If you want to create a copy of the filtered array
+      this.filter = [...this.tableBooking];
+
+      this.totalCount = this.tableBooking.length;
     });
+  }
   }
 
   public openAddEditTableModal(table: TableEntity | any = null): void {

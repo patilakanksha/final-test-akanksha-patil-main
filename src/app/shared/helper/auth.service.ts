@@ -31,6 +31,7 @@ export class AuthService {
   }
 
   public refereshToken(): void{
+    debugger;
     let payload = {
       accessToken: localStorage.getItem("access_token"),
       refreshToken: localStorage.getItem("refresh_token")
@@ -41,12 +42,25 @@ export class AuthService {
     ).subscribe((response: any) =>{
       localStorage.setItem("access_token", response.accessToken);
       localStorage.setItem("refresh_token", response.refreshToken);
-      this.router.navigate(['/dashboard']);
+
+      const role = localStorage.getItem('role');
+    if(role){
+      if(role=='Admin'){
+        this.router.navigate(['/admin/table']);
+      } else if(role=='Guest'){
+        this.router.navigate(['/dashboard']);     
+      }
+      else if(role=='Manager')
+      {
+        this.router.navigate(['/manager/booking-list']);
+      }
+    }
     }, (error: any) =>{
       localStorage.removeItem("userName");
       localStorage.removeItem("access_token");
       localStorage.removeItem("refresh_token");
-      this.toastrService.error('Invalid Username or Password', 'Error');
+      // this.toastrService.error('Invalid Username or Password', 'Error');
+      this.router.navigate(['/login']);  
     })
 }
 

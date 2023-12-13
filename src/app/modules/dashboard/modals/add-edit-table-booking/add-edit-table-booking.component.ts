@@ -89,22 +89,34 @@ export class AddEditTableBookingComponent {
       console.log(this.bookingTableForm.value);
       this.adminService
         .addEditBookingTable(this.bookingTableForm.value)
-        .subscribe((response: any) => {
-          console.log('add edit response', response);
-          if (saveData?.id) {
-            this.toastr.success('Record updated successfully', 'Success');
-          } else {
-            this.toastr.success('Record save successfully', 'Success');
-          }
-          this.onClose();
-        });
+        .subscribe(
+          (response: any) => {
+            console.log('add edit response', response);
+            if (saveData?.id) {
+              this.toastr.success('Record updated successfully', 'Success');
+            } else {
+              this.toastr.success('Record saved successfully', 'Success');
+            }
+            this.onClose();
+          },
+          (error: any) => {
+            debugger;
+            // Check if the error response contains a custom message
+            if (error?.error?.status == "Table is already a booking for the same time on that table.") {
+                this.toastr.error(error.error.status, 'Error');
+            } else {
+                // Show a generic error message
+                this.toastr.error('Error while saving record', 'Error');
+            }
+        }
+        );
     } else {
       Object.values(this.bookingTableForm.controls).forEach((control) => {
         control.markAsTouched();
       });
     }
   }
-
+  
   public onClose(): void {
     this.close.emit();
   }

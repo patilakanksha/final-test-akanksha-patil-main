@@ -1,6 +1,6 @@
-<!-- Table list -->
+<!-- Booking list -->
 <div class="container employee-shift-section">
-  <h1 class="text-center mt-4">Tables</h1>
+  <h1 class="text-center">All Bookings</h1>
   <div class="row">
     <div class="col-sm">
       <div class="input-group mb-3">
@@ -9,32 +9,24 @@
         <span class="input-group-text" id="Search"><i class="fa fa-search"></i></span>
       </div>
     </div>
-    <div class="col-sm">
-      <div class="text-end">
-        <button title="Add" class="btn btn-success btn-xl" (click)="openAddEditTableModal()">
-          <i class="fa fa-plus fa-lg"></i> Add Table
-        </button>
-      </div>
-    </div>
     <div class="table-responsive mt-5">
       <ngx-datatable class="bootstrap no-detail-row" [columnMode]="'force'" [footerHeight]="50" [rowHeight]="'auto'"
         [rows]="filter" [count]="totalCount" [limit]="5" [scrollbarH]="true">
-        <ngx-datatable-column name="Table Name" prop="name" [width]="150">
+        <ngx-datatable-column name="Table Number" prop="table.number" [width]="100">
         </ngx-datatable-column>
-        <ngx-datatable-column name="Table Number" prop="number" [width]="150">
+        <ngx-datatable-column name="User Name" prop="user.firstName" [width]="150">
         </ngx-datatable-column>
-        <ngx-datatable-column name="Table Desctiption" prop="description" [width]="300">
+        <ngx-datatable-column name="Start Time" prop="startTime" [width]="150">
         </ngx-datatable-column>
-
+        <ngx-datatable-column name="End Time" prop="endTime" [width]="150">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Status" prop="status" [width]="150">
+        </ngx-datatable-column>
         <ngx-datatable-column name="Actions" [sortable]="false" [width]="120">
           <ng-template ngx-datatable-cell-template let-rowndex="rowIndex" let-id="value" let-row="row">
             <button title="Edit" type="button" class="btn btn-sm btn-warning ms-2 mt-1"
               (click)="openAddEditTableModal(row)">
               <i class="fa fa-edit fa-lg"></i>
-            </button>
-            <button title="Delete" type="button" class="btn btn-sm btn-danger ms-2 mt-1"
-              (click)="openDeleteTableModal(row)">
-              <i class="fa fa-trash fa-lg"></i>
             </button>
           </ng-template>
         </ngx-datatable-column>

@@ -1,0 +1,57 @@
+<div class="modal-header">
+  <h3 class="modal-title pull-left">{{ isEdit ? "Edit" : "Add" }} Table</h3>
+  <button
+    class="btn btn-outline-secondary close pull-right"
+    aria-label="Close"
+    tooltip
+    title="Close"
+    (click)="onClose()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="UpdateBokingStatusForm">
+    <div class="row mt-3">
+      <div class="form-group col">
+        <div class="form-floating">
+          <select
+            formControlName="status"
+            class="form-select"
+            aria-label="Select Status"
+          >
+            <option value="" disabled>Select status</option>
+            <option value="Pending">Pending</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Cancelled">Cancelled</option>
+            <!-- Add more status options as needed -->
+          </select>
+          <label>Status</label>
+        </div>
+        <small
+          *ngIf="
+            UpdateBokingStatusForm.get('status')?.hasError('required') &&
+            UpdateBokingStatusForm.get('status')?.touched
+          "
+          class="text-danger"
+        >
+          Status is required.
+        </small>
+      </div>
+      
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button
+    class="btn btn-primary"
+    tooltip
+    [title]="isEdit ? 'Update' : 'Add'"
+    (click)="save()"
+  >
+    {{ isEdit ? "Update" : "Add" }}
+  </button>
+  <button class="btn btn-secondary" tooltip title="Cancel" (click)="onClose()">
+    Cancel
+  </button>
+</div>

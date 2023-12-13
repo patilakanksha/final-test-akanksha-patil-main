@@ -8,83 +8,83 @@
           <div class="row">
             <div class="form-group col-md-6 mb-2">
               <div class="form-floating">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="firstName"
-                  formControlName="firstName"
-                  required
-                  placeholder="Enter first name"
-                />
+                <input type="text" class="form-control" id="firstName" formControlName="firstName" required
+                  placeholder="Enter first name" />
                 <label for="firstName">First Name</label>
               </div>
               <div>
-                <small
-                  class="text-danger"
-                  *ngIf="
+                <small class="text-danger" *ngIf="
                     registrationForm.get('firstName')?.hasError('required') &&
                     registrationForm.get('firstName')?.touched
-                  "
-                >
+                  ">
                   First Name is required
+                </small>
+              </div>
+              <div>
+                <small class=text-danger *ngIf="checkControlHasError('firstName', 'maxlength')">
+                  First Name should not exceed 50 character
+                </small>
+              </div>
+              <div>
+                <small class=text-danger *ngIf="checkControlHasError('firstName', 'minlength')">
+                  First Name should have minimum 2 character
+                </small>
+              </div>
+              <div>
+                <small class=text-danger *ngIf="checkControlHasError('firstName', 'pattern')">
+                  Only letters are allowed
                 </small>
               </div>
             </div>
 
             <div class="form-group col-md-6 mb-2">
               <div class="form-floating">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="lastName"
-                  formControlName="lastName"
-                  placeholder="Enter last name"
-                  required
-                />
+                <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                  placeholder="Enter last name" required />
                 <label for="lastName">Last Name</label>
               </div>
               <div>
-                <small
-                  class="text-danger"
-                  *ngIf="
+                <small class="text-danger" *ngIf="
                     registrationForm.get('lastName')?.hasError('required') &&
                     registrationForm.get('lastName')?.touched
-                  "
-                >
+                  ">
                   Last Name is required
+                </small>
+              </div>
+              <div>
+                <small class=text-danger *ngIf="checkControlHasError('lastName', 'maxlength')">
+                  Last Name should not exceed 50 character
+                </small>
+              </div>
+              <div>
+                <small class=text-danger *ngIf="checkControlHasError('lastName', 'minlength')">
+                  Last Name should have minimum 2 character
+                </small>
+              </div>
+              <div>
+                <small class=text-danger *ngIf="checkControlHasError('lastName', 'pattern')">
+                  Only letters are allowed
                 </small>
               </div>
             </div>
 
             <div class="form-group mb-2">
               <div class="form-floating">
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  formControlName="email"
-                  placeholder="Enter email"
-                  required
-                />
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email"
+                autocomplete="email" required />
                 <label for="email">Email</label>
               </div>
               <div>
-                <small
-                  class="text-danger"
-                  *ngIf="
+                <small class="text-danger" *ngIf="
                     registrationForm.get('email')?.hasError('required') &&
                     registrationForm.get('email')?.touched
-                  "
-                >
+                  ">
                   Email is required
                 </small>
-                <small
-                  class="text-danger"
-                  *ngIf="
+                <small class="text-danger" *ngIf="
                     registrationForm.get('email')?.hasError('email') &&
                     registrationForm.get('email')?.touched
-                  "
-                >
+                  ">
                   Please provide a valid email address
                 </small>
               </div>
@@ -92,25 +92,21 @@
 
             <div class="form-group mb-2">
               <div class="form-floating">
-                <input
-                  type="tel"
-                  class="form-control"
-                  id="phone"
-                  formControlName="phone"
-                  placeholder="Enter phone"
-                  required
-                />
+                <input type="tel" class="form-control" id="phone" formControlName="phone" placeholder="Enter phone"
+                  required />
                 <label for="phone">Phone</label>
               </div>
               <div>
-                <small
-                  class="text-danger"
-                  *ngIf="
+                <small class="text-danger" *ngIf="
                     registrationForm.get('phone')?.hasError('required') &&
                     registrationForm.get('phone')?.touched
-                  "
-                >
+                  ">
                   Phone is required
+                </small>
+              </div>
+              <div>
+                <small class=text-danger *ngIf="checkControlHasError('phone', 'pattern')">
+                  Phone number should be of 10 digit
                 </small>
               </div>
             </div>
@@ -119,37 +115,22 @@
               <label>Gender</label>
               <div class="d-flex">
                 <div class="form-check me-2">
-                  <input
-                    type="radio"
-                    class="form-check-input"
-                    id="male"
-                    value="male"
-                    formControlName="gender"
-                    required
-                  />
+                  <input type="radio" class="form-check-input" id="male" value="male" formControlName="gender"
+                    required />
                   <label class="form-check-label" for="male">Male</label>
                 </div>
 
                 <div class="form-check">
-                  <input
-                    type="radio"
-                    class="form-check-input"
-                    id="female"
-                    value="female"
-                    formControlName="gender"
-                    required
-                  />
+                  <input type="radio" class="form-check-input" id="female" value="female" formControlName="gender"
+                    required />
                   <label class="form-check-label" for="female">Female</label>
                 </div>
               </div>
               <div>
-                <small
-                  class="text-danger"
-                  *ngIf="
+                <small class="text-danger" *ngIf="
                     registrationForm.get('gender')?.hasError('required') &&
                     registrationForm.get('gender')?.touched
-                  "
-                >
+                  ">
                   Gender is required
                 </small>
               </div>
@@ -157,63 +138,50 @@
 
             <div class="form-group mb-2">
               <div class="form-floating">
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  formControlName="password"
-                  placeholder="Enter password"
-                  required
-                />
+                <input type="password" class="form-control" id="password" formControlName="password"
+                  placeholder="Enter password"   autocomplete="new-password" required />
                 <label for="password">Password</label>
               </div>
               <div>
-                <small
-                  class="text-danger"
-                  *ngIf="
+                <small class="text-danger" *ngIf="
                     registrationForm.get('password')?.hasError('required') &&
                     registrationForm.get('password')?.touched
-                  "
-                >
+                  ">
                   Password is required
                 </small>
+              </div>
+              <div>
+                <small class=text-danger *ngIf="checkControlHasError('password', 'minlength')">
+                  password should be minimum of 8 character long
+                </small>
+              </div>
+              <div *ngIf="passwordErrorMessages" class="text-danger">
+                {{ passwordErrorMessages }}
               </div>
             </div>
 
             <div class="form-group mb-2">
               <div class="form-floating">
-                <input
-                  type="password"
-                  class="form-control"
-                  id="confirmPassword"
-                  formControlName="confirmPassword"
-                  placeholder="Enter confirm password"
-                  required
-                />
+                <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+                  placeholder="Enter confirm password" required  autocomplete="new-password"/>
                 <label for="confirmPassword">Confirm Password</label>
               </div>
               <div>
-                <small
-                  class="text-danger"
-                  *ngIf="
+                <small class="text-danger" *ngIf="
                     registrationForm
                       .get('confirmPassword')
                       ?.hasError('required') &&
                     registrationForm.get('confirmPassword')?.touched
-                  "
-                >
+                  ">
                   Confirm Password is required
                 </small>
-                <small
-                  class="text-danger"
-                  *ngIf="
+                <small class="text-danger" *ngIf="
                     registrationForm
                       .get('confirmPassword')
                       ?.hasError('passwordMismatch') &&
                     registrationForm.get('confirmPassword')?.touched
-                  "
-                >
-                  Passwords do not match.
+                  ">
+                  Passwords does not match.
                 </small>
               </div>
             </div>
@@ -224,7 +192,7 @@
             </button>
           </div>
           <div class="text-center mt-2">
-            <p>If already have an account? <a (click)="navigateToLogin()" class="text-success">Login Here</a></p>             
+            <p>If already have an account? <a (click)="navigateToLogin()" class="text-success">Login Here</a></p>
           </div>
         </form>
       </div>

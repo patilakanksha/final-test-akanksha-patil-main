@@ -31,9 +31,16 @@ export class AddEditTableComponent {
   private initializeForm() {
     this.tableForm = this.fb.group({
       id: [null],
-      name: ['', Validators.required],
+      name: ['', [
+        Validators.required,
+        Validators.maxLength(25),
+        Validators.minLength(2),
+        Validators.pattern(/^[A-Za-z]+$/)]],
       number: [null, [Validators.required, Validators.min(1)]],
-      description: ['', [Validators.required]],
+      description: ['', [ Validators.required,
+        Validators.maxLength(25),
+        Validators.minLength(2),
+        Validators.pattern(/^[A-Za-z]+$/)]],
     });
   }
 
@@ -43,12 +50,11 @@ export class AddEditTableComponent {
       console.log(this.tableForm.value);
       this.adminService
         .addEditTable(this.tableForm.value)
-        .subscribe((response: any) => {
-          console.log('add edit response', response);
+        .subscribe(() => {
           if (saveData?.id) {
-            this.toastr.success('Record updated successfully', 'Success');
+            this.toastr.success('Table updated successfully', 'Success');
           } else {
-            this.toastr.success('Record save successfully', 'Success');
+            this.toastr.success('Table save successfully', 'Success');
           }
           this.onClose();
         });
@@ -61,5 +67,26 @@ export class AddEditTableComponent {
 
   public onClose(): void {
     this.close.emit();
+  }
+
+  /**
+   * The function checks if a form control is invalid and has been interacted with by the user.
+   * @param {string} controlName - The controlName parameter is a string. It is form control in the employeeShiftForm.
+   * @returns a boolean value.
+   */
+  public checkIfControlValid(controlName: string): any {
+    return this.tableForm.get(controlName)?.invalid &&
+      this.tableForm.get(controlName)?.errors &&
+      (this.tableForm.get(controlName)?.dirty || this.tableForm.get(controlName)?.touched);
+  }
+
+  /**
+   * The function checks if a specific control in a form has a specific error.
+   * @param {string} controlName - The name of the form control you want to check for errors.
+   * @param {string} error - The "error" parameter is for check specific error
+   * @returns the result of calling the `hasError` method 
+   */
+  public checkControlHasError(controlName: string, error: string): any {
+    return this.tableForm.get(controlName)?.hasError(error)
   }
 }
