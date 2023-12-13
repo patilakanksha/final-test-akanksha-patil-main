@@ -35,6 +35,9 @@
               <button class="btn btn-outline-primary form-control mt-4" [disabled]="loginForm.invalid"
                 (click)="login()">Login</button>
             </div>
+            <div class="text-center mt-2">
+              <p>Don't have an account? <a (click)="navigateToRegister()" class="text-primary">Register Here</a></p>             
+            </div>
           </form>
         </div>
       </div>

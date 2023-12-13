@@ -60,6 +60,7 @@ export class LoginComponent {
         //set role
         localStorage.setItem("role", response?.user?.role);
         localStorage.setItem("userId", response?.user?.id);
+        localStorage.setItem('userName', response?.user?.firstName);
         this.toastrService.success('User logged in successsfully', 'Success');
         if(response?.user?.role){
           if(response?.user?.role=='Admin'){
@@ -111,5 +112,9 @@ export class LoginComponent {
    */
   public checkControlHasError(controlName: string, error: string): any {
     return this.loginForm.get(controlName)?.hasError(error)
+  }
+
+  navigateToRegister() {
+    this.router.navigate(['/guest-registration']);
   }
 }

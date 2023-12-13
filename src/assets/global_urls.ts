@@ -14,6 +14,10 @@ export const END_POINT = {
   UPDATE_BOOKING_TABLE: 'api/Booking/Update',
   DELETE_BOOKING_TABLE: 'api/Booking/Delete',
 
+
+  REGISTER_USER: 'api/User',
+  GET_USER_BY_ID: 'api/User/GetById',
+  UPDATE_PROFILE:'api/User/Update'
   // json db
   // GET_TABLES: 'tables',
   // DELETE_TABLE: 'tables/',

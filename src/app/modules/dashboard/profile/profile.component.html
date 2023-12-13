@@ -1,0 +1,48 @@
+<div class="container employee-shift-section">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card mt-5 mb-5">
+        <div class="card-header">
+          <h5 class="card-title text-center">My Profile</h5>
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <tbody>      
+              <tr>
+                <th scope="row">First Name</th>
+                <td>{{ loggedInProfile?.firstName }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Last Name</th>
+                <td>{{ loggedInProfile?.lastName }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Email</th>
+                <td>{{ loggedInProfile?.email }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Phone Number</th>
+                <td>{{ loggedInProfile?.phone }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Gender</th>
+                <td>{{ loggedInProfile?.gender }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          <div class="text-end">
+            <button
+              title="Add"
+              class="btn btn-success btn-xl"
+              (click)="openUpdateProfileModal()"
+            >
+              <i class="fa fa-plus fa-lg"></i> Update Profile
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

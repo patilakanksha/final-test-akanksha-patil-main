@@ -43,6 +43,7 @@ export class AddEditTableBookingComponent {
       startTime: [null, [Validators.required]],
       endTime: [null, [Validators.required, this.endTimeValidator.bind(this)]],
       status: ['Pending'],
+      
     });
   }
 

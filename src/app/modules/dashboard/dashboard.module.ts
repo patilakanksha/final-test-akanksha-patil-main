@@ -19,6 +19,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TableBookingComponent } from './table-booking/table-booking.component';
 import { AddEditTableBookingComponent } from './modals/add-edit-table-booking/add-edit-table-booking.component';
+import { ProfileComponent } from './profile/profile.component';
+import { EditProfileComponent } from './modals/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { AddEditTableBookingComponent } from './modals/add-edit-table-booking/ad
     ViewEmployeeComponent,
     TableBookingComponent,
     AddEditTableBookingComponent,
+    ProfileComponent,
+    EditProfileComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,187 @@
+<div class="modal-header">
+    <h3 class="modal-title pull-left">Update Profile</h3>
+    <button
+      class="btn btn-outline-secondary close pull-right"
+      aria-label="Close"
+      tooltip
+      title="Close"
+      (click)="onClose()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  
+        <div class="col-12">
+          <!-- <div class="card shadow p-4"> -->
+            <form [formGroup]="updateProfileForm">
+              <div class="row">
+                <div class="form-group col-md-6 mb-2">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="firstName"
+                      formControlName="firstName"
+                      required
+                      placeholder="Enter first name"
+                    />
+                    <label for="firstName">First Name</label>
+                  </div>
+                  <div>
+                    <small
+                      class="text-danger"
+                      *ngIf="
+                      updateProfileForm.get('firstName')?.hasError('required') &&
+                      updateProfileForm.get('firstName')?.touched
+                      "
+                    >
+                      First Name is required
+                    </small>
+                  </div>
+                </div>
+    
+                <div class="form-group col-md-6 mb-2">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="lastName"
+                      formControlName="lastName"
+                      placeholder="Enter last name"
+                      required
+                    />
+                    <label for="lastName">Last Name</label>
+                  </div>
+                  <div>
+                    <small
+                      class="text-danger"
+                      *ngIf="
+                      updateProfileForm.get('lastName')?.hasError('required') &&
+                      updateProfileForm.get('lastName')?.touched
+                      "
+                    >
+                      Last Name is required
+                    </small>
+                  </div>
+                </div>
+    
+                <div class="form-group mb-2">
+                  <div class="form-floating">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      formControlName="email"
+                      placeholder="Enter email"
+                      required
+                    />
+                    <label for="email">Email</label>
+                  </div>
+                  <div>
+                    <small
+                      class="text-danger"
+                      *ngIf="
+                      updateProfileForm.get('email')?.hasError('required') &&
+                      updateProfileForm.get('email')?.touched
+                      "
+                    >
+                      Email is required
+                    </small>
+                    <small
+                      class="text-danger"
+                      *ngIf="
+                      updateProfileForm.get('email')?.hasError('email') &&
+                        updateProfileForm.get('email')?.touched
+                      "
+                    >
+                      Please provide a valid email address
+                    </small>
+                  </div>
+                </div>
+    
+                <div class="form-group mb-2">
+                  <div class="form-floating">
+                    <input
+                      type="tel"
+                      class="form-control"
+                      id="phone"
+                      formControlName="phone"
+                      placeholder="Enter phone"
+                      required
+                    />
+                    <label for="phone">Phone</label>
+                  </div>
+                  <div>
+                    <small
+                      class="text-danger"
+                      *ngIf="
+                      updateProfileForm.get('phone')?.hasError('required') &&
+                      updateProfileForm.get('phone')?.touched
+                      "
+                    >
+                      Phone is required
+                    </small>
+                  </div>
+                </div>
+    
+                <div class="form-group mb-2">
+                  <label>Gender</label>
+                  <div class="d-flex">
+                    <div class="form-check me-2">
+                      <input
+                        type="radio"
+                        class="form-check-input"
+                        id="male"
+                        value="Male"
+                        formControlName="gender"
+                        required
+                      />
+                      <label class="form-check-label" for="male">Male</label>
+                    </div>
+    
+                    <div class="form-check">
+                      <input
+                        type="radio"
+                        class="form-check-input"
+                        id="female"
+                        value="Female"
+                        formControlName="gender"
+                        required
+                      />
+                      <label class="form-check-label" for="female">Female</label>
+                    </div>
+                  </div>
+                  <div>
+                    <small
+                      class="text-danger"
+                      *ngIf="
+                      updateProfileForm.get('gender')?.hasError('required') &&
+                      updateProfileForm.get('gender')?.touched
+                      "
+                    >
+                      Gender is required
+                    </small>
+                  </div>
+                </div>
+    
+              </div>
+            </form>
+          </div>
+        <!-- </div> -->
+      
+  </div>
+  <div class="modal-footer">
+    <button
+              title="Edit"
+              type="button"
+              class="btn btn-sm btn-warning ms-2 mt-1"
+              (click)="save()"
+            >
+              <i class="fa fa-edit fa-lg"></i>
+            </button>
+    <button class="btn btn-secondary" tooltip title="Cancel" (click)="onClose()">
+      Cancel
+    </button>
+  </div>
+  

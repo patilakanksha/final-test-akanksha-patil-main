@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TableEntity } from 'src/app/modules/admin/entities/table-entity';
+import { ProfileEntity } from 'src/app/modules/dashboard/entities/profile-entity';
 import { TableBookingEntity } from 'src/app/modules/dashboard/entities/table-booking-entity';
 import { BASE_URL, END_POINT } from 'src/assets/global_urls';
 
@@ -41,11 +42,21 @@ export class AdminService {
   }
 
   public addEditBookingTable(data: TableBookingEntity): any {
+    debugger;
     if (data.id) {
       // const endpoint = `${BASE_URL + END_POINT.UPDATE_BOOKING_TABLE + data.id}`;
       // return this.httpClient.put(endpoint, data);
+      let updatePayload = {
+        "id": data.id,
+        "tableId": data.tableId,
+        "startTime": data.startTime,
+        "endTime": data.endTime,
+        "status": data.status,
+        "userId": localStorage.getItem('userId')
+      }
+      console.log("Data",updatePayload);
       const endpoint = `${BASE_URL + END_POINT.UPDATE_BOOKING_TABLE}`;
-      return this.httpClient.post(endpoint, data);
+      return this.httpClient.post(endpoint, updatePayload);
     } else {
       // let payload = {name: data., number: data.number, description: data.description};
       let payload = {
@@ -53,14 +64,58 @@ export class AdminService {
         "startTime": data.startTime,
         "endTime": data.endTime,
         "status": data.status,
-        "userId": localStorage.getItem('role')
+        "userId": localStorage.getItem('userId')
       }
       const endpoint = `${BASE_URL + END_POINT.SAVE_BOOKING_TABLE}`;
       return this.httpClient.post(endpoint, payload);
     }
   }
 
-  public deleteBookingTable(tableId: number): any {
+  public deleteBookingTable(tableId: number): any {    
+    let payload: any = { id: tableId };
+    console.log("payload")
+    return this.httpClient.post(BASE_URL + END_POINT.DELETE_BOOKING_TABLE, payload);
+    // return this.httpClient.delete(
+    //   `${BASE_URL + END_POINT.DELETE_BOOKING_TABLE + tableId}`
+    // );
+  }
+  //#endregion
+
+
+  //#region User
+  public getUser(): any {
+    const loggedInUserId :string|null = localStorage.getItem('userId');
+    console.log('User ID from localStorage:', loggedInUserId);
+
+    let payload = {
+      id: loggedInUserId,
+    };
+    console.log("Logged Data Id", payload);
+    const endpoint = `${BASE_URL + END_POINT.GET_USER_BY_ID}`;
+    return this.httpClient.post(endpoint, payload);
+  }
+
+  public addEditUser(data: ProfileEntity): any {
+    if (data.id) {
+      // const endpoint = `${BASE_URL + END_POINT.UPDATE_BOOKING_TABLE + data.id}`;
+      // return this.httpClient.put(endpoint, data);
+      const endpoint = `${BASE_URL + END_POINT.UPDATE_PROFILE}`;
+      return this.httpClient.post(endpoint, data);
+    } else {
+      // let payload = {name: data., number: data.number, description: data.description};
+      let payload = {
+        "firstName": data.firstName,
+        "lasName": data.lastName,
+        "email": data.email,
+        "gender": data.gender,
+        "password": data.password,
+      }
+      const endpoint = `${BASE_URL + END_POINT. REGISTER_USER}`;
+      return this.httpClient.post(endpoint, payload);
+    }
+  }
+
+  public deleteUser(tableId: number): any {
     let payload: any = { id: tableId };
     return this.httpClient.post(BASE_URL + END_POINT.DELETE_BOOKING_TABLE, payload);
     // return this.httpClient.delete(

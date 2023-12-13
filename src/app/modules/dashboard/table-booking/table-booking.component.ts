@@ -13,6 +13,7 @@ import { AddEditTableBookingComponent } from '../modals/add-edit-table-booking/a
 })
 export class TableBookingComponent {
   public totalCount = 0;
+  public tableName ="";
   public tableBooking: TableBookingEntity[] = [];
   public addEditTableModal!: BsModalRef;
   public deleteTableModal!: BsModalRef;
@@ -32,9 +33,12 @@ export class TableBookingComponent {
 
   private loadBookingTables(): void {
     this.adminService.getbookingTables().subscribe((response: any) => {
+      console.log("Response of Booking",response);
       this.tableBooking = response;
       this.filter = [...response];
       this.totalCount = this.tableBooking.length;
+  
+
     });
   }
 
@@ -62,7 +66,7 @@ export class TableBookingComponent {
       this.deleteTableModal.hide();
     });
     this.deleteTableModal.content.confirmedDelete.subscribe(() => {
-      this.adminService.deleteTable(table.id).subscribe(() => {
+      this.adminService.deleteBookingTable(table.id).subscribe(() => {
         this.toastr.success('Table deleted successfully', 'Success');
       });
       this.deleteTableModal.hide();

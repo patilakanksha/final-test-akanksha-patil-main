@@ -22,4 +22,18 @@ export class AccountService {
   public refresh(token: any): any{
     return this.httpClient.post(BASE_URL+END_POINT.REFRESH_TOKEN, token)
   }
+
+  public registerUser(data:any): any{
+    let payload = {
+      "firstName": data.firstName,
+      "lastName": data.lastName,
+      "email": data.email,
+      "phone": data.phone,
+      "gender": data.gender,
+      "password": data.password,
+      "role":"Guest"
+    }
+    const endpoint = `${BASE_URL + END_POINT. REGISTER_USER}`;
+    return this.httpClient.post(endpoint, payload);
+  }
 }
