@@ -22,8 +22,6 @@ import { GuestRegistrationComponent } from './modules/guest-registration/guest-r
 import { NotAuthorizedComponent } from './shared/components/not-authorized/not-authorized.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { RoleAuthGuard } from './shared/helper/role-auth.guard';
-import { ManagerComponent } from './modules/manager/manager.component';
-import { BookingListComponent } from './modules/manager/booking-list/booking-list.component';
 import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
 
 // Function to get JWT token from local storage
@@ -36,7 +34,6 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'guest-registration', component: GuestRegistrationComponent },
-  // { path: '/not-authorized', component: NotAuthorizedComponent },
   {
     path: 'admin',
     loadChildren: () => import('./modules/admin/admin.module').then((m) => m.AdminModule),
