@@ -8,8 +8,7 @@ import { EditBookingStatusComponent } from '../modals/edit-booking-status/edit-b
 
 @Component({
   selector: 'app-booking-list',
-  templateUrl: './booking-list.component.html',
-  styleUrls: ['./booking-list.component.scss']
+  templateUrl: './booking-list.component.html'
 })
 export class BookingListComponent {
   public totalCount = 0;

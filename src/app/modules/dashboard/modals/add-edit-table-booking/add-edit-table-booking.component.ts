@@ -93,9 +93,9 @@ export class AddEditTableBookingComponent {
           (response: any) => {
             console.log('add edit response', response);
             if (saveData?.id) {
-              this.toastr.success('Record updated successfully', 'Success');
+              this.toastr.success('Booking updated successfully', 'Success');
             } else {
-              this.toastr.success('Record saved successfully', 'Success');
+              this.toastr.success('Table book successfully', 'Success');
             }
             this.onClose();
           },

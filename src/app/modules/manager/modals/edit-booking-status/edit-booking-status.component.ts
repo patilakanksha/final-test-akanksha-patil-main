@@ -48,9 +48,9 @@ export class EditBookingStatusComponent {
         .subscribe((response: any) => {
           console.log('add edit response', response);
           if (saveData?.id) {
-            this.toastr.success('Record updated successfully', 'Success');
+            this.toastr.success('Booking status updated successfully', 'Success');
           } else {
-            this.toastr.success('Record save successfully', 'Success');
+            this.toastr.success('Booking status save successfully', 'Success');
           }
           this.onClose();
         });
