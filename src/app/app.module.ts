@@ -19,10 +19,8 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/login/login.component';
 import { GuestRegistrationComponent } from './modules/guest-registration/guest-registration.component';
-import { NotAuthorizedComponent } from './shared/components/not-authorized/not-authorized.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { RoleAuthGuard } from './shared/helper/role-auth.guard';
-import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
 
 // Function to get JWT token from local storage
 export function tokenGetter() {
@@ -60,8 +58,6 @@ const routes: Routes = [
     LoginComponent,
     DashboardComponent,
     GuestRegistrationComponent,
-    NotAuthorizedComponent,
-    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

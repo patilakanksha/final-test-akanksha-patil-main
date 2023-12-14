@@ -28,18 +28,6 @@ export class TableComponent {
   ) {}
 
   ngOnInit() {
-    const role = localStorage.getItem('role');
-    if(role){
-      if(role=='Admin'){
-        this.router.navigate(['/admin/table']);
-      } else if(role=='Guest'){
-        this.router.navigate(['/dashboard']);     
-      }
-      else if(role=='Manager')
-      {
-        this.router.navigate(['/manager/booking-list']);
-      }
-    }
     this.loadTables();
   }
 

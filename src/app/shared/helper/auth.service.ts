@@ -76,4 +76,15 @@ export class AuthService {
     this.toastrService.success('Logout Successfully', 'Logout')
     this.router.navigate(['/login'])
   }
+
+
+  private lastVisitedRoute: string = '/';
+
+  setLastVisitedRoute(route: string): void {
+    this.lastVisitedRoute = route;
+  }
+
+  getLastVisitedRoute(): string {
+    return this.lastVisitedRoute;
+  }
 }

@@ -30,7 +30,7 @@ export class LoginComponent {
       }
       else if(role=='Manager')
       {
-        this.router.navigate(['/manager/booking-lis']);
+        this.router.navigate(['/manager/booking-list']);
       }
     } else {
       localStorage.removeItem('userName');
