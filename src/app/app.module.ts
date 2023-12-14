@@ -42,13 +42,13 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: () => import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
     canActivate: [RoleAuthGuard],
-    data: { roles: ['user', 'manager', 'admin'] },
+    data: { roles: ['Guest', 'Admin'] },
   },
   {
     path: 'manager',
     loadChildren: () => import('./modules/manager/manager.module').then((m) => m.ManagerModule),
     canActivate: [RoleAuthGuard],
-    data: { roles: ['Manager'] },
+    data: { roles: ['Manager', 'Admin'] },
   },
 ];
 

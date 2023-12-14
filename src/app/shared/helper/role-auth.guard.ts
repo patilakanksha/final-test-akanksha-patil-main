@@ -36,7 +36,9 @@ export class RoleAuthGuard implements CanActivate {
     }
 
     const userRoles = this.authService.getUserRoles();
-    const requiredRoles = route?.data['roles'] as string[];
+    // const requiredRoles = route?.data['roles'];
+    const requiredRoles = (route?.data as { roles: string[] })?.roles;  // Cast data to a specific type and then access 'roles'
+    console.log('Roles:', requiredRoles);
     debugger
     if (!requiredRoles.includes(userRoles)) {
       this.toastrService.error(
